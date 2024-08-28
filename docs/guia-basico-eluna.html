@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link type="application/atom+xml" rel="alternate" href="../feed.xml" title="Jekyll • Simple, blog-aware, static sites" />
+  <link type="application/atom+xml" rel="alternate" href="../feed/release.xml" title="Jekyll releases posts" />
+  <link rel="alternate" type="application/atom+xml" title="Recent commits to Jekyll’s master branch" href="https://github.com/jekyll/jekyll/commits/master.atom">
+  <link rel="preload" href="../fonts/lato-v14-latin-300.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../fonts/lato-v14-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../css/screen.css" as="style">
+  <link rel="stylesheet" href="../css/screen.css">
+
+<title>Guia básico ELUNA</title>
+
+</head>
+<body class="wrap">
+<section class="docs">
+  <div class="grid">
+    <div class="docs-nav-mobile unit whole show-on-mobiles">
+  <select id="doc-nav" onchange="navigateToUrl(this)" aria-label="Select a page from the documentation">
+    <option value="">Navigate the docs…</option>
+    
+      <optgroup label="Getting Started">
+          <option value="/docs/">Quickstart</option>
+          <option value="/docs/installation/">Installation</option>
+          <option value="/docs/ruby-101/">Ruby 101</option>
+          <option value="/docs/community/">Community</option>
+          <option value="/docs/step-by-step/01-setup/">Step by Step Tutorial</option>
+      </optgroup>
+    
+      <optgroup label="Build">
+          <option value="/docs/usage/">Command Line Usage</option>
+          <option value="/docs/configuration/">Configuration</option>
+          <option value="/docs/rendering-process/">Rendering Process</option>
+      </optgroup>
+    
+      <optgroup label="Content">
+          <option value="/docs/pages/">Pages</option>
+          <option value="/docs/posts/">Posts</option>
+          <option value="/docs/front-matter/">Front Matter</option>
+          <option value="/docs/collections/">Collections</option>
+          <option value="/docs/datafiles/">Data Files</option>
+          <option value="/docs/assets/">Assets</option>
+          <option value="/docs/static-files/">Static Files</option>
+      </optgroup>
+    
+      <optgroup label="Site Structure">
+          <option value="/docs/structure/">Directory Structure</option>
+          <option value="/docs/liquid/">Liquid</option>
+          <option value="/docs/variables/">Variables</option>
+          <option value="/docs/includes/">Includes</option>
+          <option value="/docs/layouts/">Layouts</option>
+          <option value="/docs/permalinks/">Permalinks</option>
+          <option value="/docs/themes/">Themes</option>
+          <option value="/docs/pagination/">Pagination</option>
+      </optgroup>
+    
+      <optgroup label="Guides">
+          <option value="/docs/plugins/">Plugins</option>
+          <option value="/docs/migrations/">Blog Migrations</option>
+          <option value="/docs/upgrading/">Upgrading</option>
+          <option value="/docs/deployment/">Deployment</option>
+      </optgroup>
+    
+  </select>
+</div>
+<div class="unit four-fifths">
+      <article>
+        <h1>Guia básico ELUNA</h1>
+        <p>Essa explicação cobre os conceitos básicos que você pode explorar durante a sua aprendizagem e compreensão de como 
+          manipular o comportamento do servidor usando Eluna Lua Engine no AzerothCore.</p>
+
+<h2 id="prerequisites">Pré-requisitos</h2>
+
+<p>Para começar você precisa das seguintes coisas:</p>
+
+<ul>
+  <li>Um editor de texto (Notepad++, VSCode..)</li>
+  <li>Um servidor Azerothcore compilado com <strong>ELUNA LUA ENGINE</strong></li>
+</ul>
+
+<h2 id="instructions">Instruções</h2>
+
+<ol>
+  <li>Variáveis em Eluna Lua Engine</li>
+  <p>Variáveis em Lua são usadas para armazenar dados que podem ser manipulados ao longo do código. Elas podem ser de vários tipos, como números, strings, tabelas, etc. 
+    Em Eluna, você pode usar variáveis para armazenar informações sobre personagens, criaturas, ou até mesmo o estado do jogo.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>local playerName = "AzerothHero"<br>-- Uma string armazenada na variável playerName<br><br>local playerLevel = 70<br>-- Um número armazenado na variável playerLevel
+      </code></pre></div>
+
+  <li>Funções no Eluna Lua Engine</a>.
+    <p>Funções são blocos de código que podem ser chamados para executar uma tarefa específica. Elas ajudam a organizar o código e a reutilizar trechos de código sem repetições.</p>
+    <div class="highlighter-rouge"><pre class="highlight"><code>function GreetPlayer(player)<br>   player:SendBroadcastMessage("Bem-vindo ao Azeroth!")<br>end</code></pre></div>
+  </li>
+  <li>Chamando uma função:</li>
+  <div class="highlighter-rouge"><pre class="highlight"><code>GreetPlayer(player)</code></pre></div>
+<p>Neste exemplo, a função 'GreetPlayer' recebe um objeto 'player' e envia uma mensagem de boas-vindas para ele.</p>
+
+  <li>Register Event no Eluna Lua Engine</li>
+  <p>Register Event é uma funcionalidade que permite vincular uma função Lua a um evento específico no servidor, como quando um jogador entra no jogo, ataca uma criatura, ou usa um item. 
+    Isso permite que o desenvolvedor adicione comportamentos personalizados ao jogo sem precisar modificar o código-fonte principal.</p>
+    <div class="highlighter-rouge"><pre class="highlight"><code>local function OnPlayerLogin(event, player)<br>   player:SendBroadcastMessage("Você se conectou com sucesso!")<br>end<br>RegisterPlayerEvent(3, OnPlayerLogin)
+  </code></pre></div>
+  <p>Neste exemplo, a função 'OnPlayerLogin' é registrada para o evento de login do jogador (código de evento 3). Sempre que um jogador fizer login, a mensagem será enviada.</p>
+  
+  <li>Resumo</li>
+  <p>Variáveis: Armazenam dados que podem ser manipulados.<br><br>
+    Funções: Executam tarefas específicas e podem ser reutilizadas.<br><br>
+    Register Event: Vincula uma função a um evento do servidor, permitindo adicionar comportamento personalizado ao jogo.</p>
+</ol>
+
+      </article>
+    </div>
+
+<div class="clear"></div>
+  </div>
+</section>
+<footer>
+  <div class="grid">
+    <div class="unit two-thirds align-right center-on-mobiles"></div>
+    <div class="unit two-thirds align-right center-on-mobiles"></div>
+  </div>
+</footer>
+</body>
+</html>
